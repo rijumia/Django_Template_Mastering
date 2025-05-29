@@ -19,21 +19,21 @@ def productPage(request):
 def addProduct(request):
 
     if request.method == 'POST':
-        productName = request.POST.get('product_name')
-        productDescription = request.POST.get('product_details')
-        productPrice = request.POST.get('price')
-        productqty = request.POST.get('qty')
-        created_at = request.POST.get('created_date')
+        # productName = request.POST.get('product_name')
+        # productDescription = request.POST.get('product_details')
+        # productPrice = request.POST.get('price')
+        # productqty = request.POST.get('qty')
+        # created_at = request.POST.get('created_date')
 
         newProduct = productModel(
-            name = productName,
-            description = productDescription,
-            price = productPrice,
-            stock = productqty,
-            created_at = created_at
+            name = request.POST.get('product_name'),
+            description = request.POST.get('product_details'),
+            price = request.POST.get('price'),
+            stock = request.POST.get('qty'),
+            created_at = request.POST.get('created_date'),
         )
         newProduct.save()
-        return redirect('productPage')
+        # return redirect('productPage')
 
         return render(request, 'addProduct.html', {'message': 'Product added successfully!'})
     return render(request, 'addProduct.html')
