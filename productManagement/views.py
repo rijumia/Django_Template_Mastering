@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from productApp.models import*
 
 def homePage(request):
@@ -17,4 +17,23 @@ def productPage(request):
     return render(request, 'products.html', context)
 
 def addProduct(request):
+
+    if request.method == 'POST':
+        productName = request.POST.get('product_name')
+        productDescription = request.POST.get('product_details')
+        productPrice = request.POST.get('price')
+        productqty = request.POST.get('qty')
+        created_at = request.POST.get('created_date')
+
+        newProduct = productModel(
+            name = productName,
+            description = productDescription,
+            price = productPrice,
+            stock = productqty,
+            created_at = created_at
+        )
+        newProduct.save()
+        return redirect('productPage')
+
+        return render(request, 'addProduct.html', {'message': 'Product added successfully!'})
     return render(request, 'addProduct.html')

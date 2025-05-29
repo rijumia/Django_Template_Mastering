@@ -2,7 +2,7 @@
 
 <h2 style="text-align: center; color: #333">Add New Product</h2>
 
-<form
+<form action="" method="POST"
   style="
     max-width: 600px;
     margin: 0 auto;
@@ -12,6 +12,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   "
 >
+{% csrf_token %}
   <label
     style="display: block; margin-bottom: 8px; font-weight: 600; color: #333"
     >Product Name</label
