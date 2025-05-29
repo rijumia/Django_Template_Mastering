@@ -33,7 +33,6 @@ def addProduct(request):
             created_at = request.POST.get('created_date'),
         )
         newProduct.save()
-        # return redirect('productPage')
+        return redirect('productPage')
 
-        return render(request, 'addProduct.html', {'message': 'Product added successfully!'})
     return render(request, 'addProduct.html')
